@@ -1,14 +1,15 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import loginImage from '../../assets/login.png'
-import logoImage from '../../assets/nim_logo.png';
+import logoImage from '../../assets/nim_logo.png'
 
 const Login = () => {
-  const [passwordVisible, setPasswordVisible] = useState(false);
+  const [passwordVisible, setPasswordVisible] = useState(false)
+
   return (
-    <div className="mx-auto flex h-screen w-screen max-w-screen-2xl overflow-hidden">
+    <div className="flex h-screen w-full overflow-hidden">
       {/* Left side with background image */}
       <div
-        className="w-1/2 h-full flex-shrink-0 bg-cover bg-center relative"
+        className="hidden w-1/2 bg-cover bg-center lg:block"
         style={{
           backgroundImage: `url(${loginImage})`,
           backgroundSize: 'cover',
@@ -17,86 +18,78 @@ const Login = () => {
       />
 
       {/* Right side with login form */}
-      {/* <div className="w-1/2 h-full flex flex-col items-center justify-center bg-white py-10"> */}
-      <div className="w-1/2 h-full flex flex-col  bg-white p-10">
-        {/* <div className="w-full max-w-[539px] flex flex-col items-center"> */}
-          {/* Logo */}
-        <div className="flex-shrink-0 mb-4 mx-auto">
+      <div className="flex w-full flex-col bg-white p-8 lg:w-1/2">
+        <div className="mx-auto mb-8">
           <img
             src={logoImage}
             alt="Nigerian Institute of Management"
-            className="w-[139px] h-[139px]"
-            style={{ background: 'lightgray', objectFit: 'cover' }}
-          />
-        </div>
-        {/* <div className="w-full max-w-[539px] flex flex-col"> */}
-        <div className="w-full max-w-lg flex flex-col">
-
-        {/* Welcome Message */}
-        {/* <h1 className="text-[32px] font-semibold text-[#1B1C1E] mb-2"> */}
-        <h1 className="text-3xl font-semibold text-[#1B1C1E] mb-2">
-          Welcome to Nigerian Institute of Management Membership Portal
-        </h1>
-        
-        {/* Description */}
-        {/* <p className="text-[16px] font-medium text-[#1B1C1E] mb-6 text-center"> */}
-        <p className="text-sm font-medium text-[#1B1C1E] mb-6">
-          Enter your login details below to access the membership portal
-        </p>
-
-        {/* Membership Number Input */}
-        <div className="mb-4 w-full max-w-[539px]">
-          {/* <label className="block text-[16px] font-medium text-[#595959] mb-1" htmlFor="membership-number"> */}
-          <label className="block text-sm font-medium text-[#595959] mb-1" htmlFor="membership-number">
-            Membership Number
-          </label>
-          <input
-            type="text"
-            id="membership-number"
-            // className="w-full h-[56px] border border-[#010056] bg-[#F5F5F5] p-3 focus:outline-none"
-            className="w-full h-10 border border-[#010056] bg-[#F5F5F5] p-3 focus:outline-none"
-            required
+            className="h-[140px] w-[140px] rounded-full bg-gray-100 object-cover p-2"
           />
         </div>
 
-        {/* Password Input */}
-        <div className="relative mb-4 w-full max-w-[539px]">
-          {/* <label className="block text-[16px] font-medium text-[#595959] mb-1" htmlFor="password"> */}
-          <label className="block text-sm font-medium text-[#595959] mb-1" htmlFor="password">
-            Password
-          </label>
-          <input
-            type={passwordVisible ? 'text' : 'password'}
-            id="password"
-            // className="w-full h-[56px] border border-[#010056] bg-[#F5F5F5] p-3 focus:outline-none"
-            className="w-full h-10 border border-[#010056] bg-[#F5F5F5] p-3 focus:outline-none"
-            required
-          />
-          <button
-            type="button"
-            className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-600"
-            onClick={() => setPasswordVisible(!passwordVisible)}
-          >
-            {passwordVisible ? 'Hide' : 'Show'}
-          </button>
-        </div>
+        <div className="mx-auto w-full max-w-lg space-y-6">
+          <div className="text-center">
+            <h1 className="mb-2 text-2xl font-semibold tracking-tight text-[#1B1C1E] sm:text-3xl">
+              Welcome to Nigerian Institute of Management Membership Portal
+            </h1>
+            <p className="text-sm text-[#1B1C1E]">
+              Enter your login details below to access the membership portal
+            </p>
+          </div>
 
-        {/* Forgot Password Link */}
-        <div className="mb-6 w-full max-w-[539px]">
-          <a href="#" className="text-[#ED3436] font-medium text-[16px] float-right">
-            Forgot Password?
-          </a>
-        </div>
+          <form className="space-y-6">
+            <div>
+              <label htmlFor="membership" className="block text-sm font-medium text-[#595959]">
+                Membership Number
+              </label>
+              <input
+                id="membership"
+                type="text"
+                required
+                className="mt-1 block w-full rounded-md border border-[#010056] bg-[#F5F5F5] p-2 focus:border-[#010056] focus:outline-none focus:ring-1 focus:ring-[#010056]"
+                placeholder="Enter your membership number"
+              />
+            </div>
 
-        {/* Login Button */}
-        <button
-          type="submit"
-          className="flex justify-center items-center w-full max-w-[539px] h-10 p-3 bg-[#010056] text-white rounded transition duration-200"
-        >
-          Login
-        </button>
+            <div>
+              <div className="flex items-center justify-between">
+                <label htmlFor="password" className="block text-sm font-medium text-[#595959]">
+                  Password
+                </label>
+                <button
+                  type="button"
+                  onClick={() => {/* Add your forgot password logic here */}}
+                  className="text-sm text-[#ED3436] hover:underline bg-transparent border-none cursor-pointer p-0"
+                >
+                  Forgot password?
+                </button>
+              </div>
+              <div className="relative mt-1">
+                <input
+                  id="password"
+                  type={passwordVisible ? 'text' : 'password'}
+                  required
+                  className="block w-full rounded-md border border-[#010056] bg-[#F5F5F5] p-2 pr-10 focus:border-[#010056] focus:outline-none focus:ring-1 focus:ring-[#010056]"
+                  placeholder="Enter your password"
+                />
+                <button
+                  type="button"
+                  className="absolute inset-y-0 right-0 flex items-center pr-3 text-sm text-gray-600"
+                  onClick={() => setPasswordVisible(!passwordVisible)}
+                >
+                  {passwordVisible ? 'Hide' : 'Show'}
+                </button>
+              </div>
+            </div>
+
+            <button
+              type="submit"
+              className="w-full rounded-md bg-[#010056] p-2 text-white transition duration-200 hover:bg-[#010056]/90 focus:outline-none focus:ring-2 focus:ring-[#010056] focus:ring-offset-2"
+            >
+              Login
+            </button>
+          </form>
         </div>
-        
       </div>
     </div>
   )
